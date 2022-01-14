@@ -39,7 +39,7 @@ const Posts = (props: RouteComponentProps) => {
 				{postsJson.map((post: PostProps) => (
 					<section
 						key={post.title}
-						className="flex flex-col items-start bg-blend-soft-light bg-slate-100 border-2 border-grey-600 hover:border-indigo-400 hover:bg-indigo-200 hover:scale-105 p-4 m-4 md:w-1/3 mx-auto col-start-1 col-end-2 rounded-md"
+						className="flex flex-col items-start bg-blend-soft-light bg-slate-100 border-2 border-grey-600 hover:border-indigo-400 hover:bg-indigo-200 hover:scale-105 p-4 m-4 w-1/3 mx-auto col-start-1 col-end-2 rounded-md"
 					>
 						<h1 className="basis-1/3 w-auto flex-shrink pr-4 flex-grow-0 m-1 leading-tight">
 							<Link to={`/posts/${post.title}`}>
