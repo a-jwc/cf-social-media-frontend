@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .sidebar-icon {
+    @apply relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto hover:bg-gradient-to-b from-primary-700 via-primary-800 to-primary-600 text-indigo-300 hover:bg-indigo-400 hover:text-white hover:rounded-md hover:cursor-pointer;
+  }
+}
