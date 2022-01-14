@@ -16,7 +16,7 @@ const Posts = (props: RouteComponentProps) => {
 
 	useEffect(() => {
 		const getPosts = async () => {
-			const resp = await fetch("https://workers-rust.chauajw.workers.dev/posts", { mode: "cors" });
+			const resp = await fetch("http://localhost:8787/posts", { mode: "cors" });
 			const postsResp = await resp.json();
 			setPosts(postsResp);
 		};
