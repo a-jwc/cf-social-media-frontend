@@ -26,7 +26,7 @@ export const CreatePost: React.FunctionComponent = () => {
 	};
 
 	return (
-		<div className="flex flex-row w-auto mx-auto text-white content-center border-2 p-2 border-primary-600">
+		<div className="flex flex-row w-auto mx-auto text-white content-center border-2 p-4 border-primary-600 rounded-md">
 			<form onSubmit={handleSubmit}>
 				<header className="text-center text-3xl text-white tracking-wide">
 					<h1>Make a Post</h1>
