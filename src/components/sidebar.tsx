@@ -15,7 +15,7 @@ interface IconProp {
 
 export const Sidebar = () => {
 	return (
-		<div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col align-center border-neutral-700 text-white">
+		<div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col align-center border-neutral-700 text-white bg-primary-500">
 			<Link to={`/`}>
 				<SideBarIcon icon={<MdHome size="35" />} />
 			</Link>

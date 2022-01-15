@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "@reach/router";
 import { RouteComponentProps } from "@reach/router";
 import { CreatePost } from "./createPost";
+import { TopBar } from "./topbar";
 
 interface PostProps {
 	title: string;
@@ -34,6 +35,7 @@ const Posts = (props: RouteComponentProps) => {
 	return (
 		<div className="h-full w-auto mx-auto grid grid-cols-1 grid-rows-1 grid-flow-col font-sans bg-primary-500 font-all">
 			<div className="flex flex-col mb-32">
+        <TopBar />
 				<div className="mt-10 mb-8 mx-auto">
 					<CreatePost />
 				</div>
