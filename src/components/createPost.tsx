@@ -19,7 +19,7 @@ export const CreatePost: React.FunctionComponent = () => {
 			body: JSON.stringify(body),
 			headers: {
 				"Content-Type": "application/json",
-        "Accept": "application/json",
+        "Accept": "text/plain",
 			},
 		});
 		const postsResp = await resp.json();
