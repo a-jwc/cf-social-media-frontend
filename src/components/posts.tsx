@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "@reach/router";
-// import styles from "../styles/Home.module.css";
 import { RouteComponentProps } from "@reach/router";
-
-// import globals from "./styles/globals";
+import { CreatePost } from "./createPost";
 
 interface PostProps {
 	title: string;
@@ -16,12 +14,15 @@ const Posts = (props: RouteComponentProps) => {
 
 	useEffect(() => {
 		const getPosts = async () => {
-			const resp = await fetch("https://workers-rust.chauajw.workers.dev/posts", { mode: "cors" });
+			const resp = await fetch(
+				"https://workers-rust.chauajw.workers.dev/posts",
+				{ mode: "cors" }
+			);
 			const postsResp = await resp.json();
 			setPosts(postsResp);
 		};
 		getPosts();
-	}, []);
+	}, [setPosts, props]);
 
 	console.log(posts);
 	let postsJson = posts.map((post) => {
@@ -33,10 +34,11 @@ const Posts = (props: RouteComponentProps) => {
 	return (
 		<div className="h-full w-auto mx-auto grid grid-cols-1 grid-rows-1 grid-flow-col font-sans bg-primary-500 font-all">
 			<div className="flex flex-col grow mb-32">
+				<CreatePost />
 				<header className="text-center text-3xl text-white p-4 tracking-wide">
 					<h1>Posts</h1>
 				</header>
-				{postsJson.map((post: PostProps) => (
+				{postsJson.reverse().map((post: PostProps) => (
 					<section
 						key={post.title}
 						className="flex flex-col items-start bg-blend-soft-light bg-slate-100 border-2 border-grey-600 hover:border-indigo-400 hover:bg-indigo-200 hover:scale-105 p-4 m-4 w-1/3 mx-auto col-start-1 col-end-2 rounded-md"
