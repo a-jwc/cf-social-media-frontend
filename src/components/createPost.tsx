@@ -26,36 +26,33 @@ export const CreatePost: React.FunctionComponent = () => {
 	};
 
 	return (
-		<div className="flex flex-row w-auto mx-auto text-white content-center">
+		<div className="flex flex-row w-auto mx-auto text-white content-center border-2 p-2 border-primary-600">
 			<form onSubmit={handleSubmit}>
-				<header className="text-center text-3xl text-white p-4 tracking-wide">
+				<header className="text-center text-3xl text-white tracking-wide">
 					<h1>Make a Post</h1>
 				</header>
 				<fieldset>
 					<label className="mb-1 mt-2">Title</label>
-					<br />
 					<input
 						type="text"
 						value={title}
 						onChange={(e) => setTitle(e.target.value)}
 						placeholder="Title"
-						className="text-black mb-2 w-full rounded"
+						className="text-black mb-2 w-full rounded p-1"
 					/>
-					<br />
 					<label className="mb-1 mt-2">Post</label>
-					<br />
 					<textarea
 						// type="textarea"
 						value={post}
 						rows={4}
 						onChange={(e) => setPost(e.target.value)}
 						placeholder="Post.."
-						className="text-black mb-2 w-full rounded"
+						className="text-black mb-2 w-full rounded p-1"
 					/>
 				</fieldset>
 				<button
 					type="submit"
-					className="bg-primary-200 mt-2 p-2 rounded-md m-auto w-full"
+					className="bg-indigo-300 mt-2 p-2 rounded-md m-auto w-full hover:bg-gradient-to-b from-primary-700 via-primary-800 to-primary-600"
 				>
 					Submit
 				</button>
