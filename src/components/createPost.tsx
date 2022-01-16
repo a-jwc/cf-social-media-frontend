@@ -17,10 +17,10 @@ export const CreatePost: React.FunctionComponent = () => {
 			mode: "cors",
 			method: "POST",
 			body: JSON.stringify(body),
-			headers: {
-				"Content-Type": "application/json",
-        "Accept": "text/plain",
-			},
+			// headers: {
+			// 	"Content-Type": "application/json",
+      //   "Accept": "text/plain",
+			// },
 		});
 		const postsResp = await resp.json();
 		console.log(postsResp);
