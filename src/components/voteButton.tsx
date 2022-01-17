@@ -25,7 +25,7 @@ export const LikeButton = (props: PostProps) => {
 	const handleClick = async () => {
 		setVotes(votes + 1);
 		const resp = await fetch(
-			"https://workers-rust.chauajw.workers.dev/updatevotes",
+			"https://workers-rust.chauajw.workers.dev/updatelikes",
 			{
 				mode: "cors",
 				method: "POST",
