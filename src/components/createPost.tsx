@@ -26,6 +26,7 @@ export const CreatePost: React.FunctionComponent = () => {
 		setPost("");
 		setTitle("");
 		setUsername("");
+    setImageUrl("");
 
 		console.log(body);
 		const resp = await fetch("https://workers-rust.chauajw.workers.dev/posts", {
