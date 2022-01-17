@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 
-interface ImageData {
-	str: string;
-}
-
 export const CreatePost: React.FunctionComponent = () => {
 	const [post, setPost] = useState("");
 	const [title, setTitle] = useState("");
