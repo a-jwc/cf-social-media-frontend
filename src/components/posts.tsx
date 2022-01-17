@@ -14,9 +14,7 @@ interface PostProps {
 	imageUrl: string;
   votes: number;
 }
-// class Post extends React.Component {
 
-// }
 const Post = (post: PostProps) => {
 	return (
 		<section
@@ -37,7 +35,7 @@ const Post = (post: PostProps) => {
 			{post.imageUrl.length > 0 ? (
 				<img src={post.imageUrl} alt="replacement" />
 			) : null}
-      <LikeButton votes={post.votes} />
+      <LikeButton {...post} />
 		</section>
 	);
 };
@@ -74,7 +72,7 @@ const Posts = (props: RouteComponentProps) => {
 					<h1>Posts</h1>
 				</header>
 				{postsJson.reverse().map((post: PostProps) => (
-					<Post {...post} key={post.title} />
+					<Post {...post} key={post.time} />
 				))}
 			</div>
 		</div>
