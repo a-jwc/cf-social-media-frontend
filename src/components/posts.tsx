@@ -4,7 +4,7 @@ import { RouteComponentProps } from "@reach/router";
 import { CreatePost } from "./createPost";
 import { TopBar } from "./topbar";
 import {AiOutlineLike, AiFillLike} from "react-icons/ai";
-import { LikeButton } from "./likeButton";
+import { LikeButton } from "./voteButton";
 
 interface PostProps {
 	title: string;
