@@ -20,6 +20,11 @@ export const CreatePost: React.FunctionComponent = () => {
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+
+    if(username.length === 0) {
+      alert("Please add username.")
+    }
+
 		const now = new Date().toISOString();
 		const body = {
 			content: post,
