@@ -7,18 +7,16 @@ export const CreatePost: React.FunctionComponent = () => {
 	const [imageUrl, setImageUrl] = useState<string | undefined>("");
 	const [votes] = useState(1);
 
-  const submitPost = async (body: any) => {
-    const resp = await fetch(
-      "https://workers-rust.chauajw.workers.dev/posts",
-      {
-        mode: "cors",
-        method: "POST",
-        body: JSON.stringify(body),
-      }
-    );
-    const postsResp = await resp.json();
-    console.log(postsResp);
-  }
+	const submitPost = async (body: any) => {
+		const resp = await fetch("https://workers-rust.chauajw.workers.dev/posts", {
+			mode: "cors",
+			method: "POST",
+			body: JSON.stringify(body),
+			credentials: "include",
+		});
+		const postsResp = await resp.json();
+		console.log(postsResp);
+	};
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -35,8 +33,8 @@ export const CreatePost: React.FunctionComponent = () => {
 		setTitle("");
 		setUsername("");
 		setImageUrl("");
-    
-    submitPost(body);
+
+		submitPost(body);
 		// const users = await fetch(
 		// 	"https://workers-rust.chauajw.workers.dev/users",
 		// 	{
@@ -47,7 +45,6 @@ export const CreatePost: React.FunctionComponent = () => {
 
 		// const usersResp: any[] = await users.json();
 		// console.log("users", usersResp);
-
 	};
 
 	const handleFileUpload = async (e: any) => {
