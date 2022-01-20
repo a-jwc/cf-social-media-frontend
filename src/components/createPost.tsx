@@ -23,7 +23,7 @@ export const CreatePost: React.FunctionComponent = () => {
 
 		if (username.length === 0) {
 			alert("Please add username.");
-		} else if (post.length === 0 || imageUrl?.length === 0) {
+		} else if (post.length === 0 && imageUrl?.length === 0) {
 			alert("Please add a post or upload.");
 		} else {
 			const now = new Date().toISOString();
