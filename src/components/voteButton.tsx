@@ -41,7 +41,7 @@ export const LikeButton = (props: PostProps) => {
 		<div className="flex flex-row mt-2">
 			<AiOutlineLike
 				size="20"
-				className="mr-1 hover:text-primary-700 hover:scale-105"
+				className="mr-1 hover:text-primary-700 hover:scale-110 cursor-pointer"
 				onClick={handleClick}
 			/>
 			{votes}
