@@ -5,43 +5,59 @@ export const CreatePost: React.FunctionComponent = () => {
 	const [title, setTitle] = useState("");
 	const [username, setUsername] = useState("");
 	const [imageUrl, setImageUrl] = useState<string | undefined>("");
-  const [votes, setVotes] = useState(1);
+	const [votes] = useState(1);
+
+  const submitPost = async (body: any) => {
+    const resp = await fetch(
+      "https://workers-rust.chauajw.workers.dev/posts",
+      {
+        mode: "cors",
+        method: "POST",
+        body: JSON.stringify(body),
+      }
+    );
+    const postsResp = await resp.json();
+    console.log(postsResp);
+  }
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		let now = new Date().toISOString();
-		let body = {
+		const now = new Date().toISOString();
+		const body = {
 			content: post,
 			time: now,
 			username: username,
 			title: title,
 			imageUrl: imageUrl,
-      votes: votes
+			votes: votes,
 		};
-		console.log(body);
 		setPost("");
 		setTitle("");
 		setUsername("");
-    setImageUrl("");
+		setImageUrl("");
+    
+    submitPost(body);
+		// const users = await fetch(
+		// 	"https://workers-rust.chauajw.workers.dev/users",
+		// 	{
+		// 		mode: "cors",
+		// 		method: "GET",
+		// 	}
+		// );
 
-		console.log(body);
-		const resp = await fetch("https://workers-rust.chauajw.workers.dev/posts", {
-			mode: "cors",
-			method: "POST",
-			body: JSON.stringify(body),
-		});
-		const postsResp = await resp.json();
-		console.log(postsResp);
+		// const usersResp: any[] = await users.json();
+		// console.log("users", usersResp);
+
 	};
 
 	const handleFileUpload = async (e: any) => {
 		const file = e.target.files[0];
-    // setImageName(file.name)
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setImageUrl(reader.result?.toString());
-    }
+		// setImageName(file.name)
+		let reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onloadend = () => {
+			setImageUrl(reader.result?.toString());
+		};
 	};
 
 	return (
