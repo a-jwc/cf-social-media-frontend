@@ -20,10 +20,10 @@ export const CreatePost: React.FunctionComponent = () => {
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		// const now = new Date().toISOString();
+		const now = new Date().toISOString();
 		const body = {
 			content: post,
-			// time: now,
+			time: now,
 			username: username,
 			title: title,
 			imageUrl: imageUrl,
