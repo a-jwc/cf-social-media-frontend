@@ -21,25 +21,28 @@ export const CreatePost: React.FunctionComponent = () => {
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-    if(username.length === 0) {
-      alert("Please add username.")
-    }
+		if (username.length === 0) {
+			alert("Please add username.");
+		} else if (post.length === 0 || imageUrl?.length === 0) {
+			alert("Please add a post or upload.");
+		} else {
+			const now = new Date().toISOString();
+			const body = {
+				content: post,
+				time: now,
+				username: username,
+				title: title,
+				imageUrl: imageUrl,
+				votes: votes,
+			};
+			setPost("");
+			setTitle("");
+			setUsername("");
+			setImageUrl("");
 
-		const now = new Date().toISOString();
-		const body = {
-			content: post,
-			time: now,
-			username: username,
-			title: title,
-			imageUrl: imageUrl,
-			votes: votes,
-		};
-		setPost("");
-		setTitle("");
-		setUsername("");
-		setImageUrl("");
+			submitPost(body);
+		}
 
-		submitPost(body);
 		// const users = await fetch(
 		// 	"https://workers-rust.chauajw.workers.dev/users",
 		// 	{
