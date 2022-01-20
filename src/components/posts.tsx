@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 import { RouteComponentProps } from "@reach/router";
 import { CreatePost } from "./createPost";
 import { TopBar } from "./topbar";
-import {AiOutlineLike, AiFillLike} from "react-icons/ai";
+import { AiOutlineLike, AiFillLike } from "react-icons/ai";
 import { LikeButton } from "./voteButton";
 
 interface PostProps {
@@ -12,7 +12,7 @@ interface PostProps {
 	content: string;
 	time: string;
 	imageUrl: string;
-  votes: number;
+	votes: number;
 }
 
 const Post = (post: PostProps) => {
@@ -22,9 +22,9 @@ const Post = (post: PostProps) => {
 			className="flex flex-col items-start bg-slate-100 border-2 border-grey-600 p-4 m-4 w-1/2 mx-auto col-start-1 col-end-2 rounded-md"
 		>
 			<h1 className="basis-1/3 w-auto pr-4 flex-grow-0 m-1 leading-tight">
-				<Link to={`/posts/${post.title}`}>
-					<p className="font-medium">{post.title}</p>
-				</Link>
+				{/* <Link to={`/posts/${post.title}`}> */}
+				<p className="font-medium">{post.title}</p>
+				{/* </Link> */}
 				<Link to={`/user/${post.username}`}>
 					<small className=" text-gray-500">{post.username}</small>
 				</Link>
@@ -35,7 +35,7 @@ const Post = (post: PostProps) => {
 			{post.imageUrl.length > 0 ? (
 				<img src={post.imageUrl} alt="replacement" />
 			) : null}
-      <LikeButton {...post} />
+			<LikeButton {...post} />
 		</section>
 	);
 };
@@ -57,7 +57,6 @@ const Posts = (props: RouteComponentProps) => {
 
 	console.log(posts);
 	let postsJson = posts.map((post) => {
-		console.log(JSON.parse(post));
 		return JSON.parse(post);
 	});
 
