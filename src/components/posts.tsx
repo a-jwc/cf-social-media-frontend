@@ -42,7 +42,7 @@ const Post = (post: PostProps) => {
 
 const Posts = (props: RouteComponentProps) => {
 	const [posts, setPosts] = useState([]);
-  
+
 	const getPosts = async () => {
 		const resp = await fetch("https://workers-rust.chauajw.workers.dev/posts", {
 			mode: "cors",
@@ -53,11 +53,11 @@ const Posts = (props: RouteComponentProps) => {
 
 	useEffect(() => {
 		getPosts();
-		const interval = setInterval(() => {
-			getPosts();
-		}, 10000);
+		// const interval = setInterval(() => {
+		// 	getPosts();
+		// }, 10000);
 
-		return () => clearInterval(interval);
+		// return () => clearInterval(interval);
 	}, [setPosts, props]);
 
 	console.log(posts);
