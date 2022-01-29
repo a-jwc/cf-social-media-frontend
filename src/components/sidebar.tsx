@@ -1,5 +1,4 @@
 import { Link } from "@reach/router";
-import { IconType } from "react-icons";
 import {
 	MdViewModule,
 	MdChat,
@@ -7,7 +6,6 @@ import {
 	MdAccountCircle,
 	MdHome,
 } from "react-icons/md";
-import { JsxElement } from "typescript";
 
 interface IconProp {
 	icon: JSX.Element;
