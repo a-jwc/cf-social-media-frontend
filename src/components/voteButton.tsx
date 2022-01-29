@@ -1,4 +1,4 @@
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
 import React, { useState } from "react";
 
 interface PostProps {
