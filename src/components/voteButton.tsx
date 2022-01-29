@@ -40,7 +40,7 @@ export const VoteButton = (props: PostProps) => {
 		<div className="flex flex-row mt-2">
 			<AiOutlineHeart
 				size="20"
-				className="mr-1 mt-1 hover:text-primary-700 hover:scale-110 cursor-pointer"
+				className="mr-1 mt-0.5 hover:text-primary-700 hover:scale-110 cursor-pointer"
 				onClick={handleClick}
 			/>
 			{votes}
