@@ -1,4 +1,4 @@
-import { AiOutlineLike, AiFillLike } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import React, { useState } from "react";
 
 interface PostProps {
@@ -10,7 +10,7 @@ interface PostProps {
 	votes: number;
 }
 
-export const LikeButton = (props: PostProps) => {
+export const VoteButton = (props: PostProps) => {
 	const [votes, setVotes] = useState(props.votes);
 
 	let body = {
@@ -38,7 +38,7 @@ export const LikeButton = (props: PostProps) => {
 
 	return (
 		<div className="flex flex-row mt-2">
-			<AiOutlineLike
+			<AiOutlineHeart
 				size="20"
 				className="mr-1 hover:text-primary-700 hover:scale-110 cursor-pointer"
 				onClick={handleClick}
