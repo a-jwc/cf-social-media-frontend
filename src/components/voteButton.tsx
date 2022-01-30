@@ -1,14 +1,6 @@
 import { AiOutlineHeart } from "react-icons/ai";
 import React, { useState } from "react";
-
-interface PostProps {
-	title: string;
-	username: string;
-	content: string;
-	time: string;
-	imageUrl: string;
-	votes: number;
-}
+import { PostProps } from "../ts/interfaces";
 
 export const VoteButton = (props: PostProps) => {
 	const [votes, setVotes] = useState(props.votes);

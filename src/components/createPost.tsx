@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PostProps } from "../common/types";
+import { PostProps } from "../ts/interfaces";
 
 export const CreatePost: React.FunctionComponent<{
 	getPosts: () => void;
@@ -54,7 +54,6 @@ export const CreatePost: React.FunctionComponent<{
 			setTitle("");
 			setUsername("");
 			setImageUrl("");
-
 			
       const newPost = await submitPost(body);
       posts.push(newPost)
