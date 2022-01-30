@@ -79,7 +79,6 @@ const Posts = (props: RouteComponentProps) => {
 				<header className="text-center text-3xl text-white p-4 tracking-wide">
 					<h1>Posts</h1>
 				</header>
-				<div>loading...</div>
 				{isPending && (
 					<div className="text-center text-2xl text-white p-4 tracking-wide">
 						Loading...
