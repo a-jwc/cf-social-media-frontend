@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { PostProps } from "../common/types";
 
 export const CreatePost: React.FunctionComponent<{
 	getPosts: () => void;
 	setIsPending: React.Dispatch<React.SetStateAction<boolean>>;
-  setPosts: React.Dispatch<React.SetStateAction<never[]>>;
-  posts: never[]
+  setPosts: React.Dispatch<React.SetStateAction<PostProps[]>>;
+  posts: PostProps[]
 }> = ({ getPosts, setIsPending, setPosts, posts }) => {
 	const [post, setPost] = useState("");
 	const [title, setTitle] = useState("");
@@ -56,7 +57,7 @@ export const CreatePost: React.FunctionComponent<{
 
 			
       const newPost = await submitPost(body);
-      posts.push(newPost as never)
+      posts.push(newPost)
       setPosts(posts)
 			// setIsPending(true);
 			// setTimeout(() => {
