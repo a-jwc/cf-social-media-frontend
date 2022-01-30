@@ -52,17 +52,15 @@ const Posts = (props: RouteComponentProps) => {
 
 	}, [setPosts, props]);
 
-	console.log(posts);
 	let postsJson = posts.map((post) => {
 		return JSON.parse(post);
 	});
 
-	console.log(postsJson);
 	return (
 		<div className="h-full w-full mx-auto grid grid-cols-1 grid-rows-1 grid-flow-col font-sans bg-primary-500 font-all">
 			<div className="flex flex-col mb-32">
 				<div className="mt-10 mb-8 mx-auto">
-					<CreatePost />
+					<CreatePost getPosts={getPosts} />
 				</div>
 				<header className="text-center text-3xl text-white p-4 tracking-wide">
 					<h1>Posts</h1>
