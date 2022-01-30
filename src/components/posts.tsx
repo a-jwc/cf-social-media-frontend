@@ -66,9 +66,9 @@ const Posts = (props: RouteComponentProps) => {
 		getPosts();
 	}, [setPosts, props]);
 
-	// let postsJson = posts.map((post) => {
-	// 	return JSON.parse(post as unknown as string);
-	// });
+	let postsJson = posts.map((post) => {
+		return JSON.parse(post as unknown as string);
+	});
 
 	return (
 		<div className="h-full w-full mx-auto grid grid-cols-1 grid-rows-1 grid-flow-col font-sans bg-primary-500 font-all">
@@ -89,7 +89,7 @@ const Posts = (props: RouteComponentProps) => {
 						Loading...
 					</div>
 				)}
-				{posts.reverse().map((post: PostProps) => (
+				{postsJson.reverse().map((post: PostProps) => (
 					<Post {...post} key={post.time} />
 				))}
 			</div>
