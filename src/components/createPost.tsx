@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const CreatePost: React.FunctionComponent = () => {
+export const CreatePost: React.FunctionComponent<{getPosts: () => void}> = ({getPosts}) => {
 	const [post, setPost] = useState("");
 	const [title, setTitle] = useState("");
 	const [username, setUsername] = useState("");
