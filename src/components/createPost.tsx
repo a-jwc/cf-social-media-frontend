@@ -3,7 +3,9 @@ import React, { useState } from "react";
 export const CreatePost: React.FunctionComponent<{
 	getPosts: () => void;
 	setIsPending: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ getPosts, setIsPending }) => {
+  setPosts: React.Dispatch<React.SetStateAction<never[]>>;
+  posts: never[]
+}> = ({ getPosts, setIsPending, setPosts, posts }) => {
 	const [post, setPost] = useState("");
 	const [title, setTitle] = useState("");
 	const [username, setUsername] = useState("");
@@ -23,6 +25,7 @@ export const CreatePost: React.FunctionComponent<{
 			);
 			const postsResp = await resp.json();
 			console.log(postsResp);
+      return postsResp;
 		} catch (err) {
 			console.error(err);
 			alert("Failed to post");
@@ -51,12 +54,15 @@ export const CreatePost: React.FunctionComponent<{
 			setUsername("");
 			setImageUrl("");
 
-			submitPost(body);
+			
+      const newPost = await submitPost(body);
+      posts.push(newPost as never)
+      setPosts(posts)
 			// setIsPending(true);
-			setTimeout(() => {
-				getPosts();
-				// setIsPending(false);
-			}, 7000);
+			// setTimeout(() => {
+			// 	getPosts();
+			// 	// setIsPending(false);
+			// }, 7000);
 		}
 	};
 
