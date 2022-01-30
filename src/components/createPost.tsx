@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-export const CreatePost: React.FunctionComponent<{getPosts: () => void}> = ({getPosts}) => {
+export const CreatePost: React.FunctionComponent<{
+	getPosts: () => void;
+	setIsPending: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ getPosts, setIsPending }) => {
 	const [post, setPost] = useState("");
 	const [title, setTitle] = useState("");
 	const [username, setUsername] = useState("");
@@ -41,7 +44,11 @@ export const CreatePost: React.FunctionComponent<{getPosts: () => void}> = ({get
 			setImageUrl("");
 
 			submitPost(body);
-      getPosts();
+      // setIsPending(true);
+			setTimeout(() => {
+				getPosts();
+        // setIsPending(false);
+			}, 5000);
 		}
 	};
 
