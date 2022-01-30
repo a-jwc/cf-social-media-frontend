@@ -38,6 +38,7 @@ const Post = (post: PostProps) => {
 
 const Posts = (props: RouteComponentProps) => {
 	const [posts, setPosts] = useState([]);
+  const [isPending, setIsPending] = useState(true);
 
 	const getPosts = async () => {
 		const resp = await fetch("https://workers-rust.chauajw.workers.dev/posts", {
@@ -45,6 +46,7 @@ const Posts = (props: RouteComponentProps) => {
 		});
 		const postsResp = await resp.json();
 		setPosts(postsResp);
+    setIsPending(false);
 	};
 
 	useEffect(() => {
@@ -60,11 +62,13 @@ const Posts = (props: RouteComponentProps) => {
 		<div className="h-full w-full mx-auto grid grid-cols-1 grid-rows-1 grid-flow-col font-sans bg-primary-500 font-all">
 			<div className="flex flex-col mb-32">
 				<div className="mt-10 mb-8 mx-auto">
-					<CreatePost getPosts={getPosts} />
+					<CreatePost getPosts={getPosts} setIsPending={setIsPending} />
 				</div>
 				<header className="text-center text-3xl text-white p-4 tracking-wide">
 					<h1>Posts</h1>
 				</header>
+        <div>loading...</div>
+        {isPending && <div className="text-center text-2xl text-white p-4 tracking-wide">Loading...</div>}
 				{postsJson.reverse().map((post: PostProps) => (
 					<Post {...post} key={post.time} />
 				))}
