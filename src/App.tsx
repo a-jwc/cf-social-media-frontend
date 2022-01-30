@@ -2,7 +2,6 @@ import { Router } from "@reach/router";
 import "./styles/globals.css";
 import { Helmet } from "react-helmet";
 import Posts from "./components/posts";
-import Post from "./components/post";
 import { Sidebar } from "./components/sidebar";
 import { TopBar } from "./components/topbar";
 
@@ -19,7 +18,6 @@ function App() {
 
 			<Router>
 				<Posts path="/" />
-				<Post path="/posts/:id" title={""} content={""} />
 			</Router>
 		</>
 	);
