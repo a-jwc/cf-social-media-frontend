@@ -56,7 +56,7 @@ export const CreatePost: React.FunctionComponent<{
 			setTimeout(() => {
 				getPosts();
 				// setIsPending(false);
-			}, 5000);
+			}, 7000);
 		}
 	};
 
