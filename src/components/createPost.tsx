@@ -11,14 +11,22 @@ export const CreatePost: React.FunctionComponent<{
 	const [votes] = useState(1);
 
 	const submitPost = async (body: any) => {
-		const resp = await fetch("https://workers-rust.chauajw.workers.dev/posts", {
-			mode: "cors",
-			method: "POST",
-			body: JSON.stringify(body),
-			credentials: "include",
-		});
-		const postsResp = await resp.json();
-		console.log(postsResp);
+		try {
+			const resp = await fetch(
+				"https://workers-rust.chauajw.workers.dev/posts",
+				{
+					mode: "cors",
+					method: "POST",
+					body: JSON.stringify(body),
+					credentials: "include",
+				}
+			);
+			const postsResp = await resp.json();
+			console.log(postsResp);
+		} catch (err) {
+			console.error(err);
+			alert("Failed to post");
+		}
 	};
 
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -44,10 +52,10 @@ export const CreatePost: React.FunctionComponent<{
 			setImageUrl("");
 
 			submitPost(body);
-      // setIsPending(true);
+			// setIsPending(true);
 			setTimeout(() => {
 				getPosts();
-        // setIsPending(false);
+				// setIsPending(false);
 			}, 5000);
 		}
 	};

@@ -38,20 +38,32 @@ const Post = (post: PostProps) => {
 
 const Posts = (props: RouteComponentProps) => {
 	const [posts, setPosts] = useState([]);
-  const [isPending, setIsPending] = useState(true);
+	const [isPending, setIsPending] = useState(true);
 
 	const getPosts = async () => {
-		const resp = await fetch("https://workers-rust.chauajw.workers.dev/posts", {
-			mode: "cors",
-		});
-		const postsResp = await resp.json();
-		setPosts(postsResp);
-    setIsPending(false);
+		try {
+			const resp = await fetch(
+				"https://workers-rust.chauajw.workers.dev/posts",
+				{
+					mode: "cors",
+				}
+			);
+			if (!resp.ok) {
+				throw Error("Could not fetch data");
+			}
+			const postsResp = await resp.json();
+
+			setPosts(postsResp);
+		} catch (err) {
+			console.error(err);
+			setIsPending(false);
+			alert("Could not get posts");
+		}
+		setIsPending(false);
 	};
 
 	useEffect(() => {
 		getPosts();
-
 	}, [setPosts, props]);
 
 	let postsJson = posts.map((post) => {
@@ -67,8 +79,12 @@ const Posts = (props: RouteComponentProps) => {
 				<header className="text-center text-3xl text-white p-4 tracking-wide">
 					<h1>Posts</h1>
 				</header>
-        <div>loading...</div>
-        {isPending && <div className="text-center text-2xl text-white p-4 tracking-wide">Loading...</div>}
+				<div>loading...</div>
+				{isPending && (
+					<div className="text-center text-2xl text-white p-4 tracking-wide">
+						Loading...
+					</div>
+				)}
 				{postsJson.reverse().map((post: PostProps) => (
 					<Post {...post} key={post.time} />
 				))}
