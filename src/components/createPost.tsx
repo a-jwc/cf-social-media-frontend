@@ -57,7 +57,10 @@ export const CreatePost: React.FunctionComponent<{
 			
       const newPost = await submitPost(body);
       posts.push(newPost)
-      setPosts(posts)
+			let postsJson = posts.reverse().map((post: unknown) => {
+				return JSON.parse(post as string);
+			});
+			setPosts(postsJson);
 			// setIsPending(true);
 			// setTimeout(() => {
 			// 	getPosts();
