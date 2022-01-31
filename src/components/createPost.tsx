@@ -22,9 +22,9 @@ export const CreatePost: React.FunctionComponent<{
 					credentials: "include",
 				}
 			);
-      if (!resp.ok) {
-        throw Error("Could not post data");
-      }
+      // if (!resp.ok) {
+      //   throw Error("Could not post data");
+      // }
 			const postsResp = await resp.json();
 			console.log(postsResp);
       return postsResp;
