@@ -60,6 +60,7 @@ export const CreatePost: React.FunctionComponent<{
 			let postsJson = posts.reverse().map((post: unknown) => {
 				return JSON.parse(post as string);
 			});
+      console.log(postsJson)
 			setPosts(postsJson);
 			// setIsPending(true);
 			// setTimeout(() => {
