@@ -57,8 +57,8 @@ export const CreatePost: React.FunctionComponent<{
 			
       const newPost = await submitPost(body);
       posts.push(newPost)
+      console.log(posts)
 			let postsJson = posts.reverse().map((post: unknown) => {
-        console.log(post)
 				return JSON.parse(post as string);
 			});
       console.log(postsJson)
