@@ -20,7 +20,7 @@ const Posts = (props: RouteComponentProps) => {
 				throw Error("Could not fetch data");
 			}
 			const postsResp = await resp.json();
-			let postsJson = postsResp.map((post: unknown) => {
+			let postsJson = postsResp.reverse().map((post: unknown) => {
 				return JSON.parse(post as string);
 			});
 			setPosts(postsJson);
