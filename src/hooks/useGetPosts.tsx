@@ -6,12 +6,11 @@ export const useFetchPosts = (url: string) => {
 	const [posts, setPosts] = useState<PostProps[]>([]);
 	const [isPending, setIsPending] = useState(true);
 
-	const getPosts = useEffect(() => {
+	useEffect(() => {
 		fetch(url, {
 			mode: "cors",
 		})
 			.then((resp) => {
-        console.log(resp)
 				if (!resp.ok) {
 					throw Error("Could not fetch data");
 				}
@@ -36,7 +35,6 @@ export const useFetchPosts = (url: string) => {
 		posts,
 		isPending,
 		setPosts,
-    getPosts
 	};
 };
 

@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { PostProps } from "../ts/interfaces";
 
 export const CreatePost: React.FunctionComponent<{
-	getPosts: void;
   setPosts: React.Dispatch<React.SetStateAction<PostProps[]>>;
   posts: PostProps[]
-}> = ({ getPosts, setPosts, posts }) => {
+}> = ({ setPosts, posts }) => {
 	const [post, setPost] = useState("");
 	const [title, setTitle] = useState("");
 	const [username, setUsername] = useState("");
@@ -56,18 +55,15 @@ export const CreatePost: React.FunctionComponent<{
 			
       const newPost = await submitPost(body);
       posts.reverse().push(newPost)
-      console.log(posts)
 			let postsJson = posts.reverse().map((post: unknown) => {
 				return post as PostProps
 			});
-      console.log(postsJson)
 			setPosts(postsJson);
 		}
 	};
 
 	const handleFileUpload = async (e: any) => {
 		const file = e.target.files[0];
-		// setImageName(file.name)
 		let reader = new FileReader();
 		reader.readAsDataURL(file);
 		reader.onloadend = () => {
