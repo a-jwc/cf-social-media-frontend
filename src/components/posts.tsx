@@ -55,7 +55,7 @@ const Posts = (props: RouteComponentProps) => {
 						Loading...
 					</div>
 				)}
-				{posts.reverse().map((post: PostProps) => (
+				{posts.map((post: PostProps) => (
 					<Post {...post} key={post.time} />
 				))}
 			</div>
