@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { PostProps } from "../ts/interfaces";
 
 export const CreatePost: React.FunctionComponent<{
-	getPosts: () => void;
-	setIsPending: React.Dispatch<React.SetStateAction<boolean>>;
+	getPosts: void;
   setPosts: React.Dispatch<React.SetStateAction<PostProps[]>>;
   posts: PostProps[]
-}> = ({ getPosts, setIsPending, setPosts, posts }) => {
+}> = ({ getPosts, setPosts, posts }) => {
 	const [post, setPost] = useState("");
 	const [title, setTitle] = useState("");
 	const [username, setUsername] = useState("");
@@ -56,18 +55,13 @@ export const CreatePost: React.FunctionComponent<{
 			setImageUrl("");
 			
       const newPost = await submitPost(body);
-      posts.push(newPost)
+      posts.reverse().push(newPost)
       console.log(posts)
 			let postsJson = posts.reverse().map((post: unknown) => {
-				return JSON.parse(post as string);
+				return post as PostProps
 			});
       console.log(postsJson)
 			setPosts(postsJson);
-			// setIsPending(true);
-			// setTimeout(() => {
-			// 	getPosts();
-			// 	// setIsPending(false);
-			// }, 7000);
 		}
 	};
 
