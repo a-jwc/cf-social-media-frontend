@@ -20,8 +20,10 @@ const Posts = (props: RouteComponentProps) => {
 				throw Error("Could not fetch data");
 			}
 			const postsResp = await resp.json();
-
-			setPosts(postsResp);
+			let postsJson = postsResp.map((post: unknown) => {
+				return JSON.parse(post as string);
+			});
+			setPosts(postsJson);
 		} catch (err) {
 			console.error(err);
 			setIsPending(false);
@@ -33,10 +35,6 @@ const Posts = (props: RouteComponentProps) => {
 	useEffect(() => {
 		getPosts();
 	}, [setPosts, props]);
-
-	let postsJson = posts.map((post) => {
-		return JSON.parse(post as unknown as string);
-	});
 
 	return (
 		<div className="h-full w-full mx-auto grid grid-cols-1 grid-rows-1 grid-flow-col font-sans bg-primary-500 font-all">
@@ -57,7 +55,7 @@ const Posts = (props: RouteComponentProps) => {
 						Loading...
 					</div>
 				)}
-				{postsJson.reverse().map((post: PostProps) => (
+				{posts.reverse().map((post: PostProps) => (
 					<Post {...post} key={post.time} />
 				))}
 			</div>

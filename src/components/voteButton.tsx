@@ -13,6 +13,7 @@ export const VoteButton = (props: PostProps) => {
 		imageUrl: props.imageUrl,
 		votes: props.votes + 1,
 	};
+  
 	const handleClick = async () => {
 		setVotes(votes + 1);
 		const resp = await fetch(
