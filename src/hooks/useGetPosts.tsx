@@ -2,9 +2,9 @@ import { PostProps } from "../ts/interfaces";
 import { Post } from "../components/post";
 import { useEffect, useState } from "react";
 
-export const useFetchPosts = (url: string) => {
+export const useFetchPosts = (url: string, setIsPending: React.Dispatch<React.SetStateAction<boolean>>) => {
 	const [posts, setPosts] = useState<PostProps[]>([]);
-	const [isPending, setIsPending] = useState(true);
+	// const [isPending, setIsPending] = useState(true);
 
 	useEffect(() => {
 		fetch(url, {
@@ -29,11 +29,10 @@ export const useFetchPosts = (url: string) => {
 				alert("Could not get posts");
 			});
 		setIsPending(false);
-	}, [url]);
+	}, [setIsPending, url]);
 
 	return {
 		posts,
-		isPending,
 		setPosts,
 	};
 };

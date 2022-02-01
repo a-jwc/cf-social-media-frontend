@@ -1,9 +1,11 @@
 import { RouteComponentProps } from "@reach/router";
 import { CreatePost } from "./createPost";
 import { useMapPosts, useFetchPosts } from "../hooks/useGetPosts";
+import { useState } from "react";
 
 const Posts = (props: RouteComponentProps) => {
-	const { posts, isPending, setPosts } = useFetchPosts("https://workers-rust.chauajw.workers.dev/posts");
+	const [isPending, setIsPending] = useState(true);
+	const { posts, setPosts } = useFetchPosts("https://workers-rust.chauajw.workers.dev/posts", setIsPending);
 	const postsMap = useMapPosts(posts);
 
 	return (
