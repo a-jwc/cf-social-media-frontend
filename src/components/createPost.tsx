@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { PostProps } from "../ts/interfaces";
 
 export const CreatePost: React.FunctionComponent<{
-  setPosts: React.Dispatch<React.SetStateAction<PostProps[]>>;
-  posts: PostProps[]
+	setPosts: React.Dispatch<React.SetStateAction<PostProps[]>>;
+	posts: PostProps[];
 }> = ({ setPosts, posts }) => {
 	const [post, setPost] = useState("");
 	const [title, setTitle] = useState("");
@@ -22,12 +22,12 @@ export const CreatePost: React.FunctionComponent<{
 					credentials: "include",
 				}
 			);
-      // if (!resp.ok) {
-      //   throw Error("Could not post data");
-      // }
+			// if (!resp.ok) {
+			//   throw Error("Could not post data");
+			// }
 			const postsResp = await resp.json();
 			console.log(postsResp);
-      return postsResp;
+			return postsResp;
 		} catch (err) {
 			console.error(err);
 			alert("Failed to post");
@@ -55,11 +55,11 @@ export const CreatePost: React.FunctionComponent<{
 			setTitle("");
 			setUsername("");
 			setImageUrl("");
-			
-      const newPost = await submitPost(body);
-      posts.reverse().push(newPost)
+
+			const newPost = await submitPost(body);
+			posts.reverse().push(newPost);
 			let postsJson = posts.reverse().map((post: unknown) => {
-				return post as PostProps
+				return post as PostProps;
 			});
 			setPosts(postsJson);
 		}
@@ -75,7 +75,7 @@ export const CreatePost: React.FunctionComponent<{
 	};
 
 	return (
-		<div className="flex flex-row w-2/3 mx-auto text-white content-center border-2 p-4 border-primary-600 rounded-md">
+		<div className="submit flex flex-row w-2/3 mx-auto text-white content-center border-2 p-4 border-primary-600 rounded-md">
 			<form onSubmit={handleSubmit}>
 				<header className="text-center text-3xl text-white tracking-wide">
 					<h1>Make a Post</h1>
@@ -87,7 +87,7 @@ export const CreatePost: React.FunctionComponent<{
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 						placeholder="Username"
-						className="text-black mb-2 w-full rounded p-1"
+						className="text-black mb-2 w-full rounded p-1 invalid:border-pink-500 invalid:text-pink-600"
 					/>
 					<label className="mb-1 mt-2">Title</label>
 					<input
@@ -111,7 +111,11 @@ export const CreatePost: React.FunctionComponent<{
 						type="file"
 						name="image"
 						onChange={handleFileUpload}
-						className="text-white mb-2 w-full rounded p-1"
+						className="text-white mb-2 w-full rounded p-1 file:mr-4 file:py-2 file:px-4
+            file:rounded-full file:border-0
+            file:text-sm file:font-semibold
+            file:bg-white file:text-primary-300
+            hover:file:bg-primary-400 hover:file:text-white"
 					/>
 				</fieldset>
 				<button
