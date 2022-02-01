@@ -11,7 +11,7 @@ const Posts = (props: RouteComponentProps) => {
 	const postsMap = useMapPosts(posts);
 
 	useEffect(() => {
-		pending ? setIsPending(pending) : setIsPending(true);
+		!pending ? setIsPending(pending) : setIsPending(true);
 		// if (pending) {
 		// 	setIsPending(pending);
 		// }
