@@ -119,7 +119,7 @@ export const CreatePost: React.FunctionComponent<{
 				</fieldset>
 				<button
 					type="submit"
-					className="bg-primary-600 mt-2 p-2 rounded-md m-auto w-full hover:bg-gradient-to-b from-primary-700 via-primary-800 to-primary-600"
+					className="bg-primary-600 mt-2 p-2 rounded-md m-auto w-full hover:bg-primary-900"
 				>
 					Submit
 				</button>
