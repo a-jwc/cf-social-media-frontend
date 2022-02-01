@@ -2,9 +2,9 @@ import { PostProps } from "../ts/interfaces";
 import { Post } from "../components/post";
 import { useEffect, useState } from "react";
 
-export const useFetchPosts = (url: string, setIsPending: React.Dispatch<React.SetStateAction<boolean>>) => {
+export const useFetchPosts = (url: string) => {
 	const [posts, setPosts] = useState<PostProps[]>([]);
-	// const [isPending, setIsPending] = useState(true);
+	const [pending, setPending] = useState(true);
 
 	useEffect(() => {
 		fetch(url, {
@@ -25,15 +25,16 @@ export const useFetchPosts = (url: string, setIsPending: React.Dispatch<React.Se
 			})
 			.catch((err) => {
 				console.error(err);
-				setIsPending(false);
+				setPending(false);
 				alert("Could not get posts");
 			});
-		setIsPending(false);
-	}, [setIsPending, url]);
+    setPending(false);
+	}, [setPending, url]);
 
 	return {
 		posts,
 		setPosts,
+    pending
 	};
 };
 
