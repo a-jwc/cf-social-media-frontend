@@ -111,10 +111,9 @@ export const CreatePost: React.FunctionComponent<{
 						type="file"
 						name="image"
 						onChange={handleFileUpload}
-						className="text-white mb-2 w-full rounded p-1 file:mr-4 file:py-2 file:px-4
-            file:rounded-full file:border-0
-            file:text-sm file:font-semibold
-            file:bg-white file:text-primary-300
+						className="text-white my-2 w-full rounded
+            file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold
+            file:hover:cursor-pointer file:bg-white file:text-primary-300
             hover:file:bg-primary-400 hover:file:text-white"
 					/>
 				</fieldset>
