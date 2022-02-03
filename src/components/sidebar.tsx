@@ -13,14 +13,22 @@ interface IconProp {
 
 export const Sidebar = () => {
 	return (
-		<div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col align-center border-neutral-700 text-white bg-primary-1100 shadow-xl">
+		<div className="fixed top-0 left-0 md:h-screen h-16 md:w-16 w-full m-0 flex md:flex-col align-center border-neutral-700 text-white bg-primary-1100 shadow-xl">
 			<Link to={`/`}>
 				<SideBarIcon icon={<MdHome size="35" />} />
 			</Link>
-			<SideBarIcon icon={<MdAccountCircle size="35" />} />
-			<SideBarIcon icon={<MdChat size="35" />} />
-			<SideBarIcon icon={<MdAdd size="35" />} />
-			<SideBarIcon icon={<MdViewModule size="35" />} />
+			<Link to={`#`}>
+				<SideBarIcon icon={<MdAccountCircle size="35" />} />
+			</Link>
+			<Link to={`#`}>
+				<SideBarIcon icon={<MdChat size="35" />} />
+			</Link>
+			<Link to={`#`}>
+				<SideBarIcon icon={<MdAdd size="35" />} />
+			</Link>
+			<Link to={`#`}>
+				<SideBarIcon icon={<MdViewModule size="35" />} />
+			</Link>
 		</div>
 	);
 };
