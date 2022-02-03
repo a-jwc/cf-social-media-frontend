@@ -57,11 +57,13 @@ export const CreatePost: React.FunctionComponent<{
 			setImageUrl("");
 
 			const newPost = await submitPost(body);
-			posts.reverse().push(newPost);
-			let postsJson = posts.reverse().map((post: unknown) => {
-				return post as PostProps;
-			});
-			setPosts(postsJson);
+			if (newPost !== undefined) {
+				posts.reverse().push(newPost);
+				let postsJson = posts.reverse().map((post: unknown) => {
+					return post as PostProps;
+				});
+				setPosts(postsJson);
+			}
 		}
 	};
 
